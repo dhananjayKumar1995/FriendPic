@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FPOnboardingVCCollectionViewCell" id="gTV-IL-0wX" customClass="FPOnboardingVCCollectionViewCell" customModule="SampleProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="291" height="349"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="291" height="349"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDl-Lv-xiB" userLabel="ViewInternal">
+                        <rect key="frame" x="0.0" y="0.0" width="291" height="349"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="1_onboarding" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAG-zn-Xl2">
+                                <rect key="frame" x="0.0" y="0.0" width="291" height="252"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="350" id="VWq-Wz-Ykj"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYC-Rd-c7L">
+                                <rect key="frame" x="15" y="292" width="261" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mYC-Rd-c7L" firstAttribute="centerX" secondItem="XAG-zn-Xl2" secondAttribute="centerX" id="8i1-zS-tA7"/>
+                            <constraint firstItem="XAG-zn-Xl2" firstAttribute="leading" secondItem="SDl-Lv-xiB" secondAttribute="leading" id="Cb2-jo-oBP"/>
+                            <constraint firstItem="XAG-zn-Xl2" firstAttribute="width" secondItem="SDl-Lv-xiB" secondAttribute="width" id="TR7-vj-M79"/>
+                            <constraint firstAttribute="trailing" secondItem="mYC-Rd-c7L" secondAttribute="trailing" constant="15" id="Yro-LP-UP9"/>
+                            <constraint firstItem="mYC-Rd-c7L" firstAttribute="top" secondItem="XAG-zn-Xl2" secondAttribute="bottom" constant="40" id="aCS-xi-eEB"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mYC-Rd-c7L" secondAttribute="bottom" constant="40" id="eIU-Md-hL3"/>
+                            <constraint firstItem="mYC-Rd-c7L" firstAttribute="leading" secondItem="SDl-Lv-xiB" secondAttribute="leading" constant="15" id="gQn-fb-ZSV"/>
+                            <constraint firstItem="XAG-zn-Xl2" firstAttribute="top" secondItem="SDl-Lv-xiB" secondAttribute="top" id="zYc-Xk-n5M"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="SDl-Lv-xiB" secondAttribute="trailing" id="NAM-mr-AV3"/>
+                <constraint firstItem="SDl-Lv-xiB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Sm6-LK-F1d"/>
+                <constraint firstAttribute="bottom" secondItem="SDl-Lv-xiB" secondAttribute="bottom" id="aF3-Fr-YFx"/>
+                <constraint firstItem="SDl-Lv-xiB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="o6r-sF-N0a"/>
+            </constraints>
+            <size key="customSize" width="291" height="349"/>
+            <connections>
+                <outlet property="LabelDescription" destination="mYC-Rd-c7L" id="tN2-Az-8k7"/>
+                <outlet property="imageCollection" destination="XAG-zn-Xl2" id="fA1-Yy-nwT"/>
+                <outlet property="leadingConsImage" destination="Cb2-jo-oBP" id="8vM-bD-V8S"/>
+                <outlet property="viewInternal" destination="SDl-Lv-xiB" id="urh-yM-5sK"/>
+            </connections>
+            <point key="canvasLocation" x="297.82608695652175" y="120.87053571428571"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="1_onboarding" width="357" height="271"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

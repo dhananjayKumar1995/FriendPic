@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FPSettingVCTableViewCell" rowHeight="51" id="KGk-i7-Jjw" customClass="FPSettingVCTableViewCell" customModule="SampleProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="288" height="51"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="288" height="51"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGn-Cf-T8C" userLabel="View Internal">
+                        <rect key="frame" x="0.0" y="0.0" width="288" height="51"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Premiumplans" translatesAutoresizingMaskIntoConstraints="NO" id="SZc-gm-V1g">
+                                <rect key="frame" x="0.0" y="15" width="12.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SZc-gm-V1g" secondAttribute="height" multiplier="3:5" id="cbd-K8-Ra6"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5p-iC-spY">
+                                <rect key="frame" x="20.5" y="14" width="237.5" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ibS-2m-B9J">
+                                <rect key="frame" x="268" y="18" width="20" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="MLf-8E-WrS"/>
+                                    <constraint firstAttribute="height" constant="15" id="U7n-p0-uBL"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SZc-gm-V1g" firstAttribute="leading" secondItem="XGn-Cf-T8C" secondAttribute="leading" id="Hf2-Ch-0a3"/>
+                            <constraint firstItem="t5p-iC-spY" firstAttribute="centerY" secondItem="SZc-gm-V1g" secondAttribute="centerY" id="IgJ-Nb-cnN"/>
+                            <constraint firstItem="SZc-gm-V1g" firstAttribute="centerY" secondItem="XGn-Cf-T8C" secondAttribute="centerY" id="KA6-Dm-1jv"/>
+                            <constraint firstItem="t5p-iC-spY" firstAttribute="leading" secondItem="SZc-gm-V1g" secondAttribute="trailing" constant="8" id="Ssv-JL-x8c"/>
+                            <constraint firstAttribute="bottom" secondItem="t5p-iC-spY" secondAttribute="bottom" constant="14" id="adm-50-lnj"/>
+                            <constraint firstItem="t5p-iC-spY" firstAttribute="top" secondItem="XGn-Cf-T8C" secondAttribute="top" constant="14" id="avB-xA-pgq"/>
+                            <constraint firstItem="ibS-2m-B9J" firstAttribute="leading" secondItem="t5p-iC-spY" secondAttribute="trailing" constant="10" id="sLr-dW-dwT"/>
+                            <constraint firstAttribute="trailing" secondItem="ibS-2m-B9J" secondAttribute="trailing" id="uKR-EJ-tcc"/>
+                            <constraint firstItem="ibS-2m-B9J" firstAttribute="centerY" secondItem="t5p-iC-spY" secondAttribute="centerY" id="xJk-Bl-jh1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="XGn-Cf-T8C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Bsz-as-blg"/>
+                    <constraint firstAttribute="trailing" secondItem="XGn-Cf-T8C" secondAttribute="trailing" id="ZuI-es-zcd"/>
+                    <constraint firstItem="XGn-Cf-T8C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lbk-7C-q8F"/>
+                    <constraint firstAttribute="bottom" secondItem="XGn-Cf-T8C" secondAttribute="bottom" id="t7O-Mc-IlG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imageNextArrow" destination="ibS-2m-B9J" id="Xu8-02-Enw"/>
+                <outlet property="imageTableCell" destination="SZc-gm-V1g" id="jhN-9n-Fnt"/>
+                <outlet property="labelTableCell" destination="t5p-iC-spY" id="OvD-AN-N86"/>
+                <outlet property="viewInternal" destination="XGn-Cf-T8C" id="IpZ-Wt-cmz"/>
+            </connections>
+            <point key="canvasLocation" x="155.07246376811597" y="69.977678571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Premiumplans" width="12.5" height="19.5"/>
+        <image name="next_arrow" width="8.5" height="15"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

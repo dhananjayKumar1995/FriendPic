@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FPHomeVCCollectionViewCell" id="gTV-IL-0wX" customClass="FPHomeVCCollectionViewCell" customModule="FriendPic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="190" height="217"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="190" height="217"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="th3-Nc-Kbz">
+                        <rect key="frame" x="0.0" y="0.0" width="190" height="217"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="8Cu-kQ-hdq">
+                                <rect key="frame" x="0.0" y="0.0" width="190" height="217"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8Cu-kQ-hdq" firstAttribute="top" secondItem="th3-Nc-Kbz" secondAttribute="top" id="1OX-A7-jN5"/>
+                            <constraint firstItem="8Cu-kQ-hdq" firstAttribute="leading" secondItem="th3-Nc-Kbz" secondAttribute="leading" id="c90-3E-Ppp"/>
+                            <constraint firstAttribute="trailing" secondItem="8Cu-kQ-hdq" secondAttribute="trailing" id="e6A-uR-Teh"/>
+                            <constraint firstAttribute="bottom" secondItem="8Cu-kQ-hdq" secondAttribute="bottom" id="f6S-7J-oIQ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="th3-Nc-Kbz" secondAttribute="trailing" id="68p-17-16f"/>
+                <constraint firstAttribute="bottom" secondItem="th3-Nc-Kbz" secondAttribute="bottom" id="Eio-gk-IqV"/>
+                <constraint firstItem="th3-Nc-Kbz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="PL2-XU-2HT"/>
+                <constraint firstItem="th3-Nc-Kbz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xUg-Pc-DEd"/>
+            </constraints>
+            <size key="customSize" width="190" height="217"/>
+            <connections>
+                <outlet property="images" destination="8Cu-kQ-hdq" id="d6m-Hb-Sl5"/>
+                <outlet property="viewInternal" destination="th3-Nc-Kbz" id="XzR-by-tDA"/>
+            </connections>
+            <point key="canvasLocation" x="233.33333333333334" y="123.54910714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder" width="335" height="350"/>
+    </resources>
+</document>
