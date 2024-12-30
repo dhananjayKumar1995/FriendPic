@@ -25,8 +25,8 @@ extension PGLoginVC {
             DisplayBanners.show(message: NSLocalizedString("Please enter password.", comment: ""))
             return false
         }
-        if !password.isLengthValid(minLength: 8, maxLength: 50) {
-            DisplayBanners.show(message: "The password needs to be at least 8 characters.".localized() )
+        if !password.isLengthValid(minLength: 6, maxLength: 50) {
+            DisplayBanners.show(message: "Password should be 6 characters long..".localized() )
             return false
         }
         

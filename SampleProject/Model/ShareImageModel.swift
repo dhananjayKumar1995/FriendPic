@@ -15,6 +15,13 @@ struct ShareImageModel:Decodable {
 }
 struct ShareImageData:Decodable {
     
-    var sharedAt:String?
-  //  var shareable:[]
+    let sharedAt: String?
+    let shareable: [ShareableData]?
+
+}
+
+// MARK: - Shareable
+struct ShareableData: Codable {
+    let name, mobile: String?
+    let link: String?
 }

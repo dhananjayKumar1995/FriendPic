@@ -17,19 +17,29 @@ extension FPChangePasswordVC {
             return false
         }
         
-                if !currentPassword.isValidPassword() {
-                    DisplayBanners.show(message: "Password must be consist of minimum 6 characters and should contain atleast 1Special character,1Numeric,1Uppercase or 1Lowercase.".localized() )
-                    return false
-                }
+        if !currentPassword.isLengthValid(minLength: 6, maxLength: 50) {
+            DisplayBanners.show(message: "Password should be 6 characters long..".localized() )
+            return false
+        }
+        
+//                if !currentPassword.isValidPassword() {
+//                    DisplayBanners.show(message: "Password must be consist of minimum 6 characters and should contain atleast 1Special character,1Numeric,1Uppercase or 1Lowercase.".localized() )
+//                    return false
+//                }
         guard let NewPassword = textfieldNewPassword.text?.trim(), !NewPassword.isEmpty else {
             DisplayBanners.show(message: NSLocalizedString("Please fill New Password.", comment: ""))
             return false
         }
         
-        if !NewPassword.isValidPassword() {
-            DisplayBanners.show(message: "Password must be consist of minimum 6 characters and should contain atleast 1Special character,1Numeric,1Uppercase or 1Lowercase.".localized() )
+        if !NewPassword.isLengthValid(minLength: 6, maxLength: 50) {
+            DisplayBanners.show(message: "Password should be 6 characters long..".localized() )
             return false
         }
+        
+//        if !NewPassword.isValidPassword() {
+//            DisplayBanners.show(message: "Password must be consist of minimum 6 characters and should contain atleast 1Special character,1Numeric,1Uppercase or 1Lowercase.".localized() )
+//            return false
+//        }
         
         guard let ConfirmNewPassword = textfieldConfirmNewPassword.text?.trim(), !ConfirmNewPassword.isEmpty else {
             DisplayBanners.show(message: NSLocalizedString("Please fill Confirm-New Password.", comment: ""))

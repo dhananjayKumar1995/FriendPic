@@ -99,7 +99,7 @@ extension FPEmailVerifyVC{
     func handleResponse1(model: ResendOtpModel) {
         
         if model.status != 202{
-                
+            print(model.data)
             DisplayBanner1.show(title:model.message)
             return
         }

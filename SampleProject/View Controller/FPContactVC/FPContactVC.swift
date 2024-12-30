@@ -13,6 +13,7 @@ import SwiftyContacts
 extension Notification.Name {
     
     static let sharedAt = Notification.Name("sharedAt")
+    static let shareImageURL = Notification.Name("shareImageURL")
 }
 //PROTOCOL METHOD
 protocol SharedAtDelegate {
@@ -64,7 +65,9 @@ class FPContactVC: UIViewController,UITextFieldDelegate {
         //MARK:-REGISTER COLLECTION VIEW CELL
         myTableview.register(UINib(nibName: "FPContactVCTableViewCell", bundle: nil), forCellReuseIdentifier: "FPContactVCTableViewCell")
         
-        fetchContactData()
+        DispatchQueue.main.async {
+            self.fetchContactData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

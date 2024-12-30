@@ -32,6 +32,8 @@ class FPLoginVC: UIViewController {
     @IBOutlet weak var buttonApple: UIButton!
     @IBOutlet weak var labelEmailIsIncorrect: UILabel!
     @IBOutlet weak var labelPasswordIncorrect: UILabel!
+    @IBOutlet weak var buttonRememberMe: UIButton!
+    @IBOutlet weak var labelRememberMe: UILabel!
     
     var dict = [String:Any]()
 
@@ -67,7 +69,7 @@ class FPLoginVC: UIViewController {
             
             view?.backgroundColor = Color.appBlack.withAlphaComponent(0.10)
         })
-        
+        labelRememberMe.style(fontType: FontType.GoldplayMedium, fontSize: .size15, textColor: Color.appDarkGray)
         buttonForgotPassword.style(fontType: FontType.GoldplayMedium, fontSize: .size14, textColor: Color.appBlue)
         buttonLogin.style(fontType: FontType.GoldplaySemiBold, fontSize: .size16, textColor: Color.appWhite)
         buttonSignUp.style(fontType: FontType.GoldplaySemiBold, fontSize: .size15, textColor: Color.appBlue)
@@ -103,6 +105,52 @@ class FPLoginVC: UIViewController {
         
         viewScrollView.layer.cornerRadius = viewScrollView.frame.height/45
         viewScrollView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+      
+        
+        let emailText = UserDefaults.standard.string(forKey: "email")
+        let passwordText = UserDefaults.standard.string(forKey: "password")
+        
+        if emailText == nil {
+            
+            buttonRememberMe.isSelected = false
+            
+        } else {
+            
+            if !(emailText?.isEmpty ?? false){
+                
+                buttonRememberMe.isSelected = true
+                textFieldEmail.text = emailText
+                
+            } else {
+                
+                buttonRememberMe.isSelected = false
+                textFieldEmail.text = nil
+            }
+            
+        }
+        
+        if passwordText == nil {
+            
+            buttonRememberMe.isSelected = false
+            textFieldPassword.text = nil
+            textFieldEmail.text = nil
+            
+        } else {
+            
+            if !(passwordText?.isEmpty ?? false){
+                
+                buttonRememberMe.isSelected = true
+                textFieldPassword.text = passwordText
+                
+            } else {
+                
+                buttonRememberMe.isSelected = false
+                textFieldPassword.text = nil
+               
+            }
+            
+        }
+       
     }
     
     @objc func showHidePassword(_ notification:Notification) {

@@ -26,26 +26,52 @@ extension FPLoginVC{
     
     func handleResponse(model: UserDataModel) {
         
-        if model.status != 200 && model.status != 202{
-            
-            DisplayBanner1.show(title:model.message)
-            return
-        }
+//        if model.status != 200 && model.status != 202{
+//            
+//            DisplayBanner1.show(title:model.message)
+//            return
+//        }
         
-        else if model.status == 202 || model.status == 200{
-            
+        if model.status == 202 || model.status == 200{
+        
             let isVerified = model.data?.user?.isVerified ?? ""
             if isVerified == "" {
                 DisplayBanner2.show(title:model.message)
                 FPLoginVC.showOtpPopup(parentVC: self)
             }
             else {
+                
+                
+                if buttonRememberMe.isSelected {
+                    
+                    UserDefaults.standard.set(textFieldEmail.text?.trim(),forKey: "email")
+                    UserDefaults.standard.set(textFieldPassword.text?.trim(), forKey: "password")
+                    buttonRememberMe.isSelected = true
+                    
+                } else {
+                    
+                    
+                    UserDefaults.standard.set(nil,forKey: "email")
+                    UserDefaults.standard.set(nil, forKey: "password")
+                    buttonRememberMe.isSelected = false
+                }
+                
                 kAppDelegate.saveUserData(userData:model)
                 kAppDelegate.checkToLoadScreen()
+                
+                
             }
-            DisplayBanner2.show(title:model.message)
+            if model.data?.showPremiumBanners == 1{
+                kAppDelegate.showPremiumPopup = true
+            }else{
+                DisplayBanner2.show(title:model.message)
+            }
             Console.log(model)
-        }
+        
+         }else{
+             DisplayBanner1.show(title:model.message)
+             return
+         }
         
     }
     

@@ -25,7 +25,7 @@
 import UIKit
 
 @available(iOSApplicationExtension, unavailable)
-@objc open class IQBarButtonItem: UIBarButtonItem {
+open class IQBarButtonItem: UIBarButtonItem {
 
     private static var _classInitialize: Void = classInitialize()
 

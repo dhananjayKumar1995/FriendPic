@@ -6,9 +6,10 @@
 //
 
 import UIKit
-import Branch
+import BranchSDK
 import IQKeyboardManagerSwift
 import PromiseKit
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,9 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var isDeviceTokenUpdate = false
     var isLoadingUpdateTokenApi = false
     var mySubscription:SubscriptionDetailModel?
+    var showPremiumPopup: Bool?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        FirebaseApp.configure()
         //for subscription plan
         IAPManager.shared.fetchAvailableProducts(showLoader: false)
         

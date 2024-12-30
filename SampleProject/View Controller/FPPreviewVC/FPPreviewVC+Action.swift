@@ -33,7 +33,9 @@ extension FPPreviewVC {
         let url = urlStr.components(separatedBy: "?").first ?? ""
         let token = url.components(separatedBy: "/").last ?? ""
         if let id = otherPostModel?.data?.post?.images?[pageControl.currentPage].id{
-            voting(token: token, index: sender.tag,isLike:true, imageId: "\(id)")
+            if let sharedId = otherPostModel?.data?.share?.id{
+                voting(token: token, index: sender.tag,isLike:true, imageId: "\(id)",shareid: sharedId)
+            }
         }
           
     }
@@ -42,7 +44,9 @@ extension FPPreviewVC {
         let url = urlStr.components(separatedBy: "?").first ?? ""
         let token = url.components(separatedBy: "/").last ?? ""
         if let id = otherPostModel?.data?.post?.images?[pageControl.currentPage].id{
-            voting(token: token, index: sender.tag,isLike:false, imageId: "\(id)")
+            if let sharedId = otherPostModel?.data?.share?.id{
+                voting(token: token, index: sender.tag,isLike:false, imageId: "\(id)", shareid: sharedId)
+            }
         }
     }
 }

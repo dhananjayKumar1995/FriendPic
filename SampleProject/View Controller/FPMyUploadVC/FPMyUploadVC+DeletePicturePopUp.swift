@@ -12,21 +12,13 @@ extension FPMyUploadVC {
     
     //mark:- SHOW POP UP STATIC METHOD
     static func showDeletePicturePopup(parentVC: UIViewController,index:Int){
-        //creating a reference for the dialogView controller
-        if let popupVC = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FPCommonPopUpVC") as? FPCommonPopUpVC {
-            // popupVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-            popupVC.modalPresentationStyle = .custom
-            popupVC.modalTransitionStyle = .crossDissolve
-            popupVC.fromMyUploadScreen = true
-            popupVC.selectedIndex = index
-            //presenting the pop up viewController from the parent viewController
-            parentVC.present(popupVC, animated: true)
-
-            //setting the delegate of the dialog box to the parent viewController
-            popupVC.delegate = parentVC as? CommonPopUpDelegate
-            //presenting the pop up viewController from the parent viewController
-
-        }
+        let popupVC = FPCommonPopUpVC.instantiate(fromAppStoryboard: .registration)
+        popupVC.modalTransitionStyle = .crossDissolve
+        popupVC.modalPresentationStyle = .custom
+        popupVC.selectedIndex = index
+        popupVC.delegate = parentVC as? CommonPopUpDelegate
+        popupVC.popupType = .fromMyUploadScreen
+        parentVC.present(popupVC, animated: true, completion: nil)
     }
 }
 

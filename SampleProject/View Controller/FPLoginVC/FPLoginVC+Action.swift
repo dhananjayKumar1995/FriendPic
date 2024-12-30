@@ -93,8 +93,8 @@ extension FPLoginVC {
 //
 //        }
         if  fieldValidation(){
-            let emailData = textFieldEmail.text?.trim()
-            let passwordData = textFieldPassword.text?.trim()
+            let emailData = textFieldEmail.text?.trim() ?? ""
+            let passwordData = textFieldPassword.text?.trim() ?? ""
             let param = ["email":emailData, "password":passwordData] as [String : Any]
             print(param)
             view.endEditing(true)
@@ -132,5 +132,17 @@ extension FPLoginVC {
         }
 
 
+    }
+    
+    @IBAction func buttonRememberMeTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+     
+        guard let emailText = textFieldEmail.text?.trim(),!emailText.isEmpty else {
+            return
+        }
+
+        guard let passwordText = textFieldPassword.text?.trim(),!passwordText.isEmpty else {
+            return
+        }
     }
 }

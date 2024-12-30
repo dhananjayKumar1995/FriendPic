@@ -17,6 +17,7 @@ extension FPCommonPopUpVC {
     self.delegate?.handleAction1(action: true,index: selectedIndex)}
 }
 @IBAction func buttonCancelTapped(_ sender: UIButton) {
+    kAppDelegate.showPremiumPopup = false
     self.dismiss(animated: true, completion: nil)
 }
 

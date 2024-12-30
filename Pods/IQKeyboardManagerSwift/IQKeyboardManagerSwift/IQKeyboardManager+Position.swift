@@ -307,7 +307,7 @@ public extension IQKeyboardManager {
                         startingScrollIndicatorInsets = scrollView.scrollIndicatorInsets
                     }
                     #else
-                    startingScrollIndicatorInsets = scrollView.scrollIndicatorInsets
+                    _startingScrollIndicatorInsets = scrollView.scrollIndicatorInsets
                     #endif
                 }
 
@@ -326,7 +326,7 @@ public extension IQKeyboardManager {
                 startingScrollIndicatorInsets = unwrappedSuperScrollView.scrollIndicatorInsets
             }
             #else
-            startingScrollIndicatorInsets = unwrappedSuperScrollView.scrollIndicatorInsets
+            _startingScrollIndicatorInsets = unwrappedSuperScrollView.scrollIndicatorInsets
             #endif
 
             showLog("Saving ScrollView contentInset: \(startingContentInsets) and contentOffset: \(startingContentOffset)")

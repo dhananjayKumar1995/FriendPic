@@ -17,6 +17,7 @@ extension AppDelegate {
     
     func checkToLoadScreen(){
         let token = kUserDefaults.string(forKey: AppKeys.token)
+        print("Token\(token)")
         if token == nil
         {
             print(token)
@@ -84,7 +85,7 @@ extension AppDelegate {
         if userData.data?.token != nil {
             
             //kUserDefaults.set(userData.data?.token, forKey: UserDefaultKey.token)
-            kUserDefaults.set(userData.data?.token, forKey: UserDefaultKey.token)
+            kUserDefaults.set(userData.data?.token ?? "", forKey: UserDefaultKey.token)
         }
         kUserDefaults.set(userData.data?.user?.name, forKey: UserDefaultKey.name)
         kUserDefaults.set(userData.data?.user?.email, forKey: UserDefaultKey.email)

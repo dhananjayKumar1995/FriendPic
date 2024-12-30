@@ -15,6 +15,7 @@ class FPTabBarVC: UITabBarController, UITabBarControllerDelegate  {
     @IBInspectable var onTopIndicator: Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         if (navigationController?.viewControllers.count ?? 0) > 1 {
             kAppDelegate.setSwipe(enabled: false, navigationController: self.navigationController)
         }
@@ -23,6 +24,7 @@ class FPTabBarVC: UITabBarController, UITabBarControllerDelegate  {
         }
         UserDefaults.standard.set(true, forKey:"loggedin")
         // Do any additional setup after loading the view.
+
     }
 
     //MARK:- View Controller Life Cycle
@@ -60,8 +62,6 @@ class FPTabBarVC: UITabBarController, UITabBarControllerDelegate  {
             item.imageInsets = UIEdgeInsets(top:6, left:0, bottom: 0, right: 0)
         }
     }
-
-
 }
 
 extension UIImage{

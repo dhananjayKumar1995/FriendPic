@@ -47,18 +47,18 @@ extension FPSignUpVC {
             return false
         }
         
-//        if !password.isLengthValid(minLength: 6, maxLength: 50) {
-//            DisplayBanners.show(message: "Password should be 6 characters long..".localized() )
+        if !password.isLengthValid(minLength: 6, maxLength: 50) {
+            DisplayBanners.show(message: "Password should be 6 characters long..".localized() )
+
+            return false
+
+        }
+        
+//        if !password.isValidPassword() {
+//            DisplayBanners.show(message: "Password must be consist of minimum 6 characters and should contain atleast 1Special character,1Numeric,1Uppercase or 1Lowercase.".localized() )
 //
 //            return false
-//
 //        }
-        
-        if !password.isValidPassword() {
-            DisplayBanners.show(message: "Password must be consist of minimum 6 characters and should contain atleast 1Special character,1Numeric,1Uppercase or 1Lowercase.".localized() )
-            
-            return false
-        }
         
         guard let confirmPassword = textFieldReEnterPassword.text?.trim(), !confirmPassword.isEmpty else {
             DisplayBanners.show(message: NSLocalizedString("Please fill re-enter Password.", comment: ""))
@@ -228,8 +228,7 @@ extension FPSignUpVC {
     }
     @IBAction func buttonLoginTapped(_ sender: Any) {
         
-        let goToNextScreen = storyboard?.instantiateViewController(withIdentifier:  "FPLoginVC")as! FPLoginVC
-        self.navigationController?.pushViewController(goToNextScreen, animated: true)
+        popViewController()
     }
     @IBAction func buttonBackArrowTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

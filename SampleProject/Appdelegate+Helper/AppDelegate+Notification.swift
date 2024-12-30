@@ -133,6 +133,7 @@ extension AppDelegate {
             //DisplayBanner.show(title: model.message)
         }.catch { (error) in
             print(error)
+            self.updateTokenToServer()
             //DisplayBanner.show(title: error.localizedDescription)
         }.finally {
             //Loader.hide()

@@ -65,10 +65,7 @@ extension FPContactVC {
     
     @IBAction func buttonCheckTapped(_ sender: UIButton) {
         
-        guard let indexPaths = myTableview.indexPathForView(sender) else {
-            
-            return
-        }
+        guard let indexPaths = myTableview.indexPathForView(sender) else {return}
         
         let selectedCount = myContact.filter({ $0.isSelected  == true   }).count
         if kAppDelegate.mySubscription == nil {
@@ -76,7 +73,7 @@ extension FPContactVC {
             return
         }
         if kAppDelegate.mySubscription?.data?.subscription?.isExpired == 0 {
-            if selectedCount == 5 {
+            if selectedCount == 10 {
                 if searchArrRes[indexPaths.row].isSelected {
                     searchArrRes[indexPaths.row].isSelected.toggle()
                     if let index  = myContact.firstIndex(where: {$0.contactNumber == searchArrRes[indexPaths.row].contactNumber }) {
@@ -84,7 +81,7 @@ extension FPContactVC {
                     }
                 }
                 else {
-                    DisplayBanner1.show(title: "You have a maximum limit of 5 user")
+                    DisplayBanner1.show(title: "You have a maximum limit of 10 user")
                 }
             }
             else {

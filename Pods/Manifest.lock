@@ -29,7 +29,7 @@ PODS:
     - FBSDKCoreKit (~> 5.0)
   - Imaginary (5.0.0):
     - Cache (~> 6.0.0)
-  - IQKeyboardManagerSwift (6.5.10)
+  - IQKeyboardManagerSwift (6.5.9)
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
@@ -99,7 +99,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
   FBSDKShareKit: 259737eab3cc807087374553abdf588b3096ba55
   Imaginary: cf5e3a7dd6ab1dcbd47ba8ce5edf2307c4e99eb3
-  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   Lightbox: cc3d5124f024fa8197fd23f913160db1c61a1852
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
@@ -108,6 +108,6 @@ SPEC CHECKSUMS:
   SVPinView: 9b538d0ba68cdb092afe4f0f67ec84cbed079466
   SwiftyContacts: 9ffa2f6020f121cb106b9957143cba88ab8b773b
 
-PODFILE CHECKSUM: 3b22c88a25b3b5d1959e23887b3abaad5472a533
+PODFILE CHECKSUM: 5f661d408121b2db0ef28e603defdccf045adf3a
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

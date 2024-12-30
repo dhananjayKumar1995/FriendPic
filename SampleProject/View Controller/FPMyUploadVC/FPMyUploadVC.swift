@@ -29,6 +29,7 @@ class FPMyUploadVC: UIViewController, UIDocumentInteractionControllerDelegate {
     @IBOutlet weak var labelEmpty: UILabel!
     @IBOutlet weak var viewEmptyPicture: UIView!
     var getImageData1:GetAllPostModel?
+    var documentInteractionController = UIDocumentInteractionController()
     var selectedIndex:Int = 0
     var currentPageNo = 1
     var currentLoadingState: LoadingState = .refresh

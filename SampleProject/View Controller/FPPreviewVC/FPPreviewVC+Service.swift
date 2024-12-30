@@ -12,14 +12,14 @@ import PromiseKit
 extension FPPreviewVC {
     
     //api for voting
-    func voting(token: String,index:Int,isLike:Bool, imageId: String) {
+    func voting(token: String,index:Int,isLike:Bool, imageId: String,shareid:Int) {
 
         Loader.show()
         var like = "yes"
         if !isLike {
             like = "no"
         }
-        let param = ["vote" : like, "image_id": imageId]
+        let param = ["vote" : like, "image_id": imageId,"share_id":shareid] as [String : Any]
         firstly {
             service!.voting(token: token, param: param)
         }.done { (model: CommonResponse) in
@@ -41,8 +41,13 @@ extension FPPreviewVC {
 
         }
         DisplayBanner2.show(title:model.message)
-        myCollectionView.reloadData()
-        self.dismiss(animated: true)
+       // myCollectionView.reloadData()
+        let obj  = urlStr.components(separatedBy: "/").last ?? ""
+        let token = obj.components(separatedBy: "?").first ?? ""
+        
+        postViewForOther(token: token, index: 0)
+        
+       // self.dismiss(animated: true)
         Console.log(model)
     }
     

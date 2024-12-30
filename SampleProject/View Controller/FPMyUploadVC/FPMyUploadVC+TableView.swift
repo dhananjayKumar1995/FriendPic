@@ -96,20 +96,29 @@ extension FPMyUploadVC:UITableViewDelegate,UITableViewDataSource {
                
                return
            }
-           if isLoading && ((itemsCount - 1) != indexPath.row){
-               Console.log("FPMyUploadVC not last index or isLoading")
+//           if isLoading && ((itemsCount - 1) != indexPath.row){
+//               Console.log("FPMyUploadVC not last index or isLoading")
+//               return
+//           }
+//
+//           if itemsCount >= count {
+//               Console.log("FPMyUploadVC all data loaded itemsCount \(itemsCount) and count \(count)")
+//               return
+//           }
+//        getAllPostPagination(pageNo: currentPageNo + 1, loadingState: .nextPage)
+           
+        
+        guard let itemsCount = getImageData1?.data?.posts?.data.count,let totalPage = getImageData1?.data?.posts?.lastPage else {
+               
                return
            }
-           
-           if itemsCount >= count {
-               Console.log("FPMyUploadVC all data loaded itemsCount \(itemsCount) and count \(count)")
-               return
-           }
-        getAllPostPagination(pageNo: currentPageNo + 1, loadingState: .nextPage)
-           
+        
+        if indexPath.row == itemsCount - 1 && currentPageNo <= totalPage{
+            getAllPostPagination(pageNo: currentPageNo, loadingState: .nextPage)
+
+        }
+        
        }
-    
-   
 }
 
 extension String {

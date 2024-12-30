@@ -22,7 +22,7 @@
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>instagram</string>
+        <string>instagram</string> 
 		<string>facebook</string>
 	</array>
 	<key>NSAppTransportSecurity</key>

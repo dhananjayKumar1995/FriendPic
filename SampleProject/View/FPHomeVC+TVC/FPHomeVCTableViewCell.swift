@@ -20,6 +20,8 @@ class FPHomeVCTableViewCell: UITableViewCell {
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var viewCollection: UIView!
     @IBOutlet weak var viewInternal: UIView!
+    @IBOutlet weak var viewRefreshPage: UIView!
+    @IBOutlet weak var btnRefreshPage: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +40,10 @@ class FPHomeVCTableViewCell: UITableViewCell {
     }
     
     func setupApperance() {
+        
+        viewRefreshPage.backgroundColor = Color.appFPBlue1
+        viewRefreshPage.layer.cornerRadius = viewRefreshPage.layer.frame.height/5
+        btnRefreshPage.style(fontType: FontType.GoldplaySemiBold, fontSize: .size15, textColor: Color.appWhite,backgroundColor: .clear)
         
         buttonShare.backgroundColor = Color.appFPBlue
         buttonShare.layer.cornerRadius = buttonShare.layer.frame.height/5

@@ -46,7 +46,7 @@ class FPPremiumPlanVCTableViewCell: UITableViewCell {
        
         labelPremium.style(fontType: FontType.GoldplaySemiBold, fontSize: .size18, textColor: Color.appWhite)
         labelDoller.style(fontType: FontType.GoldplayBold, fontSize: .size28, textColor: Color.appWhite)
-        labelInvite5People.style(fontType: FontType.GoldplayMedium, fontSize: .size16, textColor: Color.appDarkGray)
+        labelInvite5People.style(fontType: FontType.GoldplaySemiBold, fontSize: .size18, textColor: Color.appBlack)
         labelMonth.style(fontType: FontType.GoldplaySemiBold, fontSize: .size18, textColor: Color.appWhite)
         buttonActivatePlan.style(fontType: FontType.GoldplaySemiBold, fontSize: .size16, textColor: Color.appWhite)
         viewShadow.backgroundColor = Color.appWhite

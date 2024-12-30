@@ -21,8 +21,14 @@ struct ImageData:Decodable {
 //    let downVote:Int?
     var images:[ImageObject]
     var newNotificationCount:Int?
+    var shareable:[ImageDataShareable]?
 }
 
+struct ImageDataShareable:Decodable {
+    var name:String?
+    var mobile:String?
+    var linke:String?
+}
 struct ImageObject:Decodable {
     let upVote:Int?
     let downVote:Int?

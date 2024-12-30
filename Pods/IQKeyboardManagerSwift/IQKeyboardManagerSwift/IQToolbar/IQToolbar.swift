@@ -25,7 +25,7 @@ import UIKit
 
 /** @abstract   IQToolbar for IQKeyboardManager.    */
 @available(iOSApplicationExtension, unavailable)
-@objc open class IQToolbar: UIToolbar, UIInputViewAudioFeedback {
+open class IQToolbar: UIToolbar, UIInputViewAudioFeedback {
 
     private static var _classInitialize: Void = classInitialize()
 
@@ -90,7 +90,6 @@ import UIKit
             if privateTitleBarButton == nil {
                 privateTitleBarButton = IQTitleBarButtonItem(title: nil)
                 privateTitleBarButton?.accessibilityLabel = "Title"
-                privateTitleBarButton?.accessibilityIdentifier = privateTitleBarButton?.accessibilityLabel
             }
             return privateTitleBarButton!
         }

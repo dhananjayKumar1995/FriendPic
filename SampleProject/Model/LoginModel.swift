@@ -19,6 +19,8 @@ struct UserDatas:Decodable {
     
     let token:String?
     let user:User?
+    let showPremiumBanners:Int?
+
 }
 
 struct User:Decodable {

@@ -6,7 +6,11 @@
 //
 
 import UIKit
-
+enum PopupType{
+    case fromHomeScreen
+    case fromMyUploadScreen
+    case atEvery3rdLoginAttempt
+}
 //MARK:- PROTOCOL METHOD
 protocol CommonPopUpDelegate {
     func handleAction1(action: Bool,index:Int)
@@ -23,15 +27,15 @@ class FPCommonPopUpVC: UIViewController {
     
     var selectedIndex:Int = 0
     var delegate : CommonPopUpDelegate?
-    var fromHomeScreen = false
-    var fromMyUploadScreen = false
+    var popupType:PopupType = .fromHomeScreen
+    
+  //  var fromHomeScreen = false
+   // var fromMyUploadScreen = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
         SetUpApperence ()
-        FromWhichScreen1 ()
-        FromWhichScreen2 ()
-       
+        popupSetup()
         // Do any additional setup after loading the view.
     }
 
@@ -46,31 +50,28 @@ class FPCommonPopUpVC: UIViewController {
         buttonCancel.style(fontType: FontType.GoldplaySemiBold, fontSize: .size18, textColor: Color.appDarkGrayColor)
     }
     
-    func FromWhichScreen1 () {
-        
-        if fromHomeScreen == true {
+    func popupSetup(){
+        labelGetPremiumPlan.style(fontType: FontType.GoldplayBold, fontSize: .size18, textColor: Color.appDarkGray)
+        labelPremiumDiscreption.style(fontType: FontType.GoldplayMedium, fontSize: .size16, textColor: Color.appDarkGray)
+        buttonCancel.style(fontType: FontType.GoldplaySemiBold, fontSize: .size15, textColor: Color.appBlue1)
+
+        switch popupType{
             
-            labelGetPremiumPlan.style(fontType: FontType.GoldplayBold, fontSize: .size18, textColor: Color.appDarkGray)
-            labelPremiumDiscreption.style(fontType: FontType.GoldplayMedium, fontSize: .size16, textColor: Color.appDarkGray)
+        case .fromHomeScreen:
+            
             labelGetPremiumPlan.text = "Remove Picture"
             labelPremiumDiscreption.text = "Are you sure you\nwant to remove this picture."
             buttonConfirm.setTitle("YES", for: .normal)
-            buttonConfirm.style(fontType: FontType.GoldplaySemiBold, fontSize: .size16, textColor: Color.appWhite)
-            buttonCancel.style(fontType: FontType.GoldplaySemiBold, fontSize: .size15, textColor: Color.appBlue1)
-        }
-    }
-    
-    func FromWhichScreen2 () {
-        
-        if fromMyUploadScreen == true {
             
-            labelGetPremiumPlan.style(fontType: FontType.GoldplayBold, fontSize: .size18, textColor: Color.appDarkGray)
-            labelPremiumDiscreption.style(fontType: FontType.GoldplayMedium, fontSize: .size16, textColor: Color.appDarkGray)
+        case .fromMyUploadScreen:
             labelGetPremiumPlan.text = "Delete Picture"
             labelPremiumDiscreption.text = "Are you sure you want to\ndelete picture from my uploads."
             buttonConfirm.setTitle("YES", for: .normal)
-            buttonConfirm.style(fontType: FontType.GoldplaySemiBold, fontSize: .size16, textColor: Color.appWhite)
-            buttonCancel.style(fontType: FontType.GoldplaySemiBold, fontSize: .size15, textColor: Color.appBlue1)
+            
+        case .atEvery3rdLoginAttempt:
+            labelGetPremiumPlan.isHidden = true
+            labelPremiumDiscreption.text = "Upgrade to Premium for exclusive benefits, adding additional friends."//"Enhance your experience by joining our Premium membership. Enjoy exclusive benefits and features that will take your experience to the next level."
+            buttonConfirm.setTitle("Premium Plan", for: .normal)
         }
     }
 }

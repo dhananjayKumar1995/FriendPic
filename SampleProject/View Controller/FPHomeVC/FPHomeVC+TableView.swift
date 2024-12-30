@@ -28,7 +28,7 @@ extension FPHomeVC:UITableViewDelegate,UITableViewDataSource{
         cell.myCollectionView.delegate = self
         cell.myCollectionView.dataSource = self
         cell.myCollectionView.reloadData()
-        
+        cell.btnRefreshPage.addTarget(self, action: #selector(buttonRefreshPageTapped), for: .touchUpInside)
         cell.buttonLike.addTarget(self, action: #selector(buttonLikeTapped), for: .touchUpInside)//USED IN ACTION FILE
         cell.buttonDislike.addTarget(self, action: #selector(buttonDislikeTapped), for: .touchUpInside)//USED IN ACTION FILE
         cell.buttonShare.addTarget(self, action: #selector(buttonShareTapped), for: .touchUpInside)//USED IN ACTION FILE
@@ -51,7 +51,7 @@ extension FPHomeVC:UITableViewDelegate,UITableViewDataSource{
     
     //MARK:-heightForRowAt indexPath
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let tableWidth = tableView.frame.size.width
+        let tableWidth = tableView.frame.size.width + 30
         return tableWidth
     }
 }

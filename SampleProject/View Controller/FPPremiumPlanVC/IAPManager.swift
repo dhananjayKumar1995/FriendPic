@@ -90,6 +90,7 @@ class IAPManager: NSObject {
     // if already purchased subcription and want to restore same subscription in same device or other device
     func restorePurchase(){
         Loader.show()
+        shouldRequestServer = true
         currentSubscriptionType = .restore
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
@@ -181,7 +182,7 @@ extension IAPManager: SKPaymentTransactionObserver{
                 print("unknown")
             }
             if let _ = transaction.error {
-                DisplayBanner1.show(title: "Can't connect to iTunes store")
+                //DisplayBanner1.show(title: "Can't connect to iTunes store")
             }
         }
     }

@@ -75,7 +75,12 @@ extension FPNotificationVC :UITableViewDelegate,UITableViewDataSource {
                
                return
            }
-
+        
+        if indexPath.row == (itemsCount) - 1 && currentPageNo <= notification?.data?.notifications?.lastPage ?? 1{
+            getAllNotification(pageNo: currentPageNo, loadingState: .nextPage)
+        }
+        
+/*
            if isLoading && ((itemsCount - 1) != indexPath.row){
                Console.log("FPNotificationVC not last index or isLoading")
                return
@@ -86,6 +91,7 @@ extension FPNotificationVC :UITableViewDelegate,UITableViewDataSource {
                return
            }
         getAllNotification(pageNo: currentPageNo + 1, loadingState: .nextPage)
+        */
            
        }
     

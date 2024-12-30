@@ -12,20 +12,13 @@ extension FPHomeVC {
     
     //mark:- SHOW POP UP STATIC METHOD
     static func showRemovePicturePopup(parentVC: UIViewController){
-        //creating a reference for the dialogView controller
-        if let popupVC = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FPCommonPopUpVC") as? FPCommonPopUpVC {
-            // popupVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-            popupVC.modalPresentationStyle = .custom
-            popupVC.modalTransitionStyle = .crossDissolve
-            popupVC.fromHomeScreen = true
-            //presenting the pop up viewController from the parent viewController
-            parentVC.present(popupVC, animated: true)
 
-            //setting the delegate of the dialog box to the parent viewController
-            popupVC.delegate = parentVC as? CommonPopUpDelegate
-            //presenting the pop up viewController from the parent viewController
-
-        }
+        let popupVC = FPCommonPopUpVC.instantiate(fromAppStoryboard: .registration)
+        popupVC.modalTransitionStyle = .crossDissolve
+        popupVC.modalPresentationStyle = .custom
+        popupVC.delegate = parentVC as? CommonPopUpDelegate
+        popupVC.popupType = .fromHomeScreen
+        parentVC.present(popupVC, animated: true, completion: nil)
     }
 }
 
@@ -33,7 +26,15 @@ extension FPHomeVC {
 extension FPHomeVC :CommonPopUpDelegate {
     func handleAction1(action: Bool, index: Int) {
         //removeDashboardImage(userId: userId, index: index)
-        removeDashboardImage()
+        if kAppDelegate.showPremiumPopup == true{
+            kAppDelegate.showPremiumPopup = false
+            
+            let vc = FPPremiumPlanVC.instantiate(fromAppStoryboard: .registration)
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            removeDashboardImage()
+        }
     }
     
 }

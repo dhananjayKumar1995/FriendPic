@@ -176,7 +176,7 @@ extension Router {
 }
 
 struct ServerURL {
-    static let baseURL = "http://35.154.184.209/api"
+    static let baseURL = "http://apis.friends-pic.com/api"//"http://54.172.168.228:8000/api"
     static let baseURL1 = "http://35.154.184.209"
 }
 

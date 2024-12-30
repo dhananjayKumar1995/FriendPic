@@ -13,6 +13,8 @@ class YPSelectionsGalleryView: UIView {
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: YPGalleryCollectionViewFlowLayout())
     
+    let buttonArrow = UIButton()
+    
     convenience init() {
         self.init(frame: .zero)
     
@@ -34,6 +36,20 @@ class YPSelectionsGalleryView: UIView {
         backgroundColor = YPConfig.colors.selectionsBackgroundColor
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
+        buttonArrow.isUserInteractionEnabled = false
+        
+        buttonArrow.setImage(UIImage(named: "right-arrow 1"), for: .normal)
+        buttonArrow.backgroundColor = .clear
+        buttonArrow.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(buttonArrow)
+        
+        NSLayoutConstraint.activate([
+            buttonArrow.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant:  1),
+            buttonArrow.widthAnchor.constraint(equalToConstant: 100),
+            buttonArrow.heightAnchor.constraint(equalToConstant: 100),
+            buttonArrow.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+        ])
+        
     }
 }
 

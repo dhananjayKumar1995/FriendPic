@@ -22,6 +22,9 @@ class FPPreviewVC: UIViewController {
     @IBOutlet weak var viewInternal: UIView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var buttonBack: UIButton!
+    @IBOutlet weak var alreadyVoted: UILabel!
+    @IBOutlet weak var buttonStackForShowHide: UIStackView!
+    
     var urlStr = ""
     var imgCollection = ["postImgs","postImgs","postImgs"]
     var currentSelectedIndex:Int? = 0
@@ -45,11 +48,23 @@ class FPPreviewVC: UIViewController {
         let component = URLComponents(string: string)
         let items = component?.queryItems?.first
         phoneNumber = items?.value ?? ""
-        postViewForOther(token: token, index: 0)
+        //postViewForOther(token: token, index: 0)
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let obj  = urlStr.components(separatedBy: "/").last ?? ""
+        let token = obj.components(separatedBy: "?").first ?? ""
+        
+        postViewForOther(token: token, index: 0)
+
+    }
     func setupApperance() {
+        alreadyVoted.isHidden = true
+        alreadyVoted.style(fontType: FontType.GoldplaySemiBold, fontSize: .size18, textColor: Color.appLightSuccessGreen)
+
         labelSelectThumbs.style(fontType: FontType.GoldplaySemiBold, fontSize: .size18, textColor: Color.appDarkGray)
         labelName.style(fontType: FontType.GoldplaySemiBold, fontSize: .size18, textColor: Color.appDarkGray)
         labelSelectThumbs.text = "Select Check Mark To Vote On\n The Best Photo"
@@ -89,6 +104,18 @@ class FPPreviewVC: UIViewController {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         pageControl.currentPage = Int(pageNumber)
+        
+        if let images = otherPostModel?.data?.share?.sharedImages{
+            var index = Int(pageNumber)
+            if images[index].isVoted == 1{
+                self.buttonStackForShowHide.isHidden = true
+                self.alreadyVoted.isHidden = false
+            }
+            else{
+                self.buttonStackForShowHide.isHidden = false
+                self.alreadyVoted.isHidden = true
+            }
+        }
     }
 }
 
@@ -103,8 +130,18 @@ struct OtherPostData : Decodable {
     var post:PostData?
     var message:String?
     var data:PostData?
+    var share:sharedPost?
+    
 }
 
+struct sharedPost:Codable{
+    var id:Int?
+    var sharedImages:[sharedImagesCollection]?
+}
+
+struct sharedImagesCollection:Codable{
+    var isVoted:Int?
+}
 struct PostData : Decodable {
     var images:[ImageInfo]?
     var user:UserInfo?

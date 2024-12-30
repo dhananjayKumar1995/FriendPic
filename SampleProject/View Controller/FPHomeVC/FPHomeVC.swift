@@ -33,6 +33,16 @@ class FPHomeVC: UIViewController {
     var getImageData:GetDashboardImageModel?
     var fromHomeScr = false
     var indexvalue:Int = 0
+    var imageURL = String()
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+                                    #selector(refreshPage(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = Color.appWhite
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +53,9 @@ class FPHomeVC: UIViewController {
         viewForEmptyPicture.isHidden = false
         labelHangOnYourFrdVoting.isHidden = true
         myTableView.isScrollEnabled = false
+        myTableView.refreshControl = refreshControl
         //USE NOTIFICATION CENTER
+
         NotificationCenter.default.addObserver(self, selector:#selector(updatedSharedAt(notification:)), name: .sharedAt, object: nil)
         //MARK:-REGISTER TABLE VIEW CELL
         myTableView.register(UINib(nibName: "FPHomeVCTableViewCell", bundle: nil), forCellReuseIdentifier: "FPHomeVCTableViewCell")
@@ -55,12 +67,18 @@ class FPHomeVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshHomeData), name: Notification.Name("refreshHomeData"), object: nil)
         setNotificationBadgeCount()
         // Do any additional setup after loading the view.
+       // NotificationCenter.default.post(name: .shareImageURL, object: nil,userInfo: ["shareImageURL":model.data?.shareable?.first?.link ?? ""])
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updatedSharedAt), name:.shareImageURL, object: nil)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getImage()
+        if kAppDelegate.showPremiumPopup == true{
+            showPopupin3rdLoginAttempt()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -68,19 +86,33 @@ class FPHomeVC: UIViewController {
         viewFloatyButton.close()
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        viewFloatyButton.
-//        actionButton!.close()
-//    }
+    func showPopupin3rdLoginAttempt(){
+        let popupVC = FPCommonPopUpVC.instantiate(fromAppStoryboard: .registration)
+        popupVC.modalTransitionStyle = .crossDissolve
+        popupVC.modalPresentationStyle = .custom
+        popupVC.popupType = .atEvery3rdLoginAttempt
+        popupVC.delegate = self
+        self.present(popupVC, animated: true, completion: nil)
+    }
+    //MARK: REFRESH MY ALBUM DESCRIPTION
+    @objc func refreshPage(_ refreshControl: UIRefreshControl) {
+        getImage()
+        refreshControl.endRefreshing()
+        
+    }
     
     @objc func refreshHomeData() {
         getImage()
     }
     
     @objc func updatedSharedAt(notification:Notification) {
-        //getImageData?.data?.sharedAt = "SharedAt"
-       // getImage()
-         
+     
+        guard let shareImageURL =  (notification.userInfo as? [String: AnyObject])?["shareImageURL"] as? String   else {
+            return
+        }
+        
+        imageURL = shareImageURL
+        
       }
     
     override func viewDidLayoutSubviews() {
@@ -174,7 +206,8 @@ class FPHomeVC: UIViewController {
                 
                 picker.dismiss(animated: true, completion: nil)
             }
-            self.present(picker, animated: true, completion: nil)
+            //self.present(picker, animated: true, completion: nil)
+            self.showSheetForMultipleSelection(self, picker: picker)
             
         })
         
@@ -186,13 +219,52 @@ class FPHomeVC: UIViewController {
         
     }
 
+    func showSheetForMultipleSelection(_ viewController: UIViewController, allowsEditing: Bool = true,picker: YPImagePicker) {
+        
+      //  imagePicker.allowsEditing = allowsEditing
+      //  self.allowsEditing = allowsEditing
+        
+        
+        let alert = UIAlertController(title: "Choose Option", message: "", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Allow app to access photo album", style: .default, handler: {(action: UIAlertAction) in
+            self.openAppSettings()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Choose Pictures", style: .default, handler: {(action: UIAlertAction) in
+           // self.openPhotoLibrary(mediaType:.image,viewController:viewController)
+            print("open previous selected")
+            self.present(picker, animated: true, completion: nil)
+        }))
+        
+        //        alert.addAction(UIAlertAction(title: "Choose Videos", style: .default, handler: {(action: UIAlertAction) in
+        //
+        //            //self.capturePhotoFromCamera(viewController, type: .image)
+        //        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//        if UIDevice.current.userInterfaceIdiom == .pad {
+//            viewController.addActionSheetForiPad(actionSheet: alert)
+//        }
+        viewController.present(alert, animated: true, completion: nil)
+    }
+    
+    func openAppSettings() {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(settingsURL) {
+            UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+        }
+    }
+    
     func setupApperance() {
         
         //        buttonAddImage.addTarget(self, action: #selector(showPicker), for: .touchUpInside)
         
         labelFriendPic.style(fontType:FontType.GoldplaySemiBold, fontSize: .size20, textColor: Color.appWhite)
         labelHangOnYourFrdVoting.style(fontType:FontType.GoldplaySemiBold, fontSize: .size18, textColor: Color.appDarkGray)
-        labelPictureNotAbailabel.style(fontType:FontType.GoldplaySemiBold, fontSize: .size24, textColor: Color.appDarkGray)
+        labelPictureNotAbailabel.style(fontType:FontType.GoldplaySemiBold, fontSize: .size30, textColor: Color.appBlack)
         viewForEmptyPicture.backgroundColor = Color.appWhite
         viewForEmptyPicture.layer.cornerRadius = viewForEmptyPicture.frame.height/45
         viewForEmptyPicture.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]

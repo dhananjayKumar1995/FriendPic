@@ -34,7 +34,8 @@ extension FPContactVC {
             return
             
         }
-       
+        NotificationCenter.default.post(name: .shareImageURL, object: nil,userInfo: ["shareImageURL":model.data?.shareable?.first?.link ?? ""])
+        
         DisplayBanner2.show(title:model.message)
         NotificationCenter.default.post(name: .sharedAt, object: nil, userInfo: nil)
         //NotificationCenter.default.post(name: .sharedAt, object: nil, userInfo: ["sharedAt":model.data?.sharedAt ?? ""])
@@ -67,4 +68,25 @@ extension FPContactVC {
 //        }
         kAppDelegate.mySubscription = model
     }
+}
+
+
+// MARK: - Welcome
+struct ShareContactModel: Codable {
+    let status: Int
+    let message: String
+    let data: ShareContactData?
+}
+
+// MARK: - DataClass
+struct ShareContactData: Codable {
+    let sharedAt: String?
+    let shareable: [Shareable]?
+
+}
+
+// MARK: - Shareable
+struct Shareable: Codable {
+    let name, mobile: String?
+    let link: String?
 }

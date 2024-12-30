@@ -73,6 +73,10 @@ public class YPSelectionsGalleryVC: UIViewController, YPSelectionsGalleryCellDel
                 v.collectionView.deleteItems(at: [indexPath])
             }, completion: { _ in })
         }
+        
+        if items.count == 0{
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 
@@ -98,6 +102,7 @@ extension YPSelectionsGalleryVC: UICollectionViewDataSource {
             cell.imageView.image = video.thumbnail
             cell.setEditable(YPConfig.showsVideoTrimmer)
         }
+    
         cell.removeButton.isHidden = YPConfig.gallery.hidesRemoveButton
         return cell
     }
@@ -140,9 +145,20 @@ extension YPSelectionsGalleryVC: UICollectionViewDelegate {
     // in the collection view Flow subclass & using UIScrollViewDecelerationRateFast
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let isScrollingBackwards = scrollView.contentOffset.x < lastContentOffsetX
+        let pageWidth = scrollView.frame.width
+        let currentPage = Int((scrollView.contentOffset.x + 0.5 * pageWidth) / pageWidth) + 1
+
         scrollView.decelerationRate = isScrollingBackwards
             ? UIScrollView.DecelerationRate.fast
             : UIScrollView.DecelerationRate.normal
         lastContentOffsetX = scrollView.contentOffset.x
+        
+        if currentPage == items.count{
+            let image = UIImage(named: "right-arrow 1") ?? UIImage()
+            v.buttonArrow.setImage(image.withHorizontallyFlippedOrientation(), for: .normal)
+        }else if currentPage == 1{
+            v.buttonArrow.setImage(UIImage(named: "right-arrow 1"), for: .normal)
+        }
+            print("Current Page: \(currentPage)")
     }
 }

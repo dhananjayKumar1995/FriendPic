@@ -136,7 +136,7 @@ final class Client {
                 case .notConnectedToInternet:
                     return NSError(domain:"com.prefGrab.error", code:urlError.code.rawValue, userInfo:[ NSLocalizedDescriptionKey: "The Internet connection appears to be offline."])
                 case .networkConnectionLost:
-                    return NSError(domain:"com.prefGrab.error", code:urlError.code.rawValue, userInfo:[ NSLocalizedDescriptionKey: "The Internet connection appears to be offline."])
+                    return NSError(domain:"com.prefGrab.error", code:urlError.code.rawValue, userInfo:[ NSLocalizedDescriptionKey: "The network connection has been lost while trying to reach our server."])
                 default:
                     
                     return error

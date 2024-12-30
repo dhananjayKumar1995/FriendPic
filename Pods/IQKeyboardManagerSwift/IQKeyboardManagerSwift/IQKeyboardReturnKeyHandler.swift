@@ -44,7 +44,7 @@ private final class IQTextFieldViewInfoModal: NSObject {
 Manages the return key to work like next/done in a view hierarchy.
 */
 @available(iOSApplicationExtension, unavailable)
-@objc public final class IQKeyboardReturnKeyHandler: NSObject {
+public final class IQKeyboardReturnKeyHandler: NSObject {
 
     // MARK: Settings
 

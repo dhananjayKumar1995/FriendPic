@@ -19,6 +19,18 @@ extension FPPreviewVC:UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         
         let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: "FPHomeVCCollectionViewCell", for: indexPath) as! FPHomeVCCollectionViewCell
         let image = otherPostModel?.data?.post?.images?[indexPath.item]
+        
+            if let sharedImages = self.otherPostModel?.data?.share?.sharedImages?[self.pageControl.currentPage]{
+            if sharedImages.isVoted == 1{
+                self.buttonStackForShowHide.isHidden = true
+                self.alreadyVoted.isHidden = false
+            }
+            else{
+                self.buttonStackForShowHide.isHidden = false
+                self.alreadyVoted.isHidden = true
+            }
+    }
+        
         if let urlStr = image?.path , let url = URL(string: urlStr) {
             cell.images.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"))
         }
